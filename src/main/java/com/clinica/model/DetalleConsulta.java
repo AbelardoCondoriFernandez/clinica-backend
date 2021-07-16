@@ -10,6 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="detalle_consulta")
@@ -30,6 +35,57 @@ public class DetalleConsulta {
 	private String diagnostico;
 	@Column(name = "tratamiento", nullable = false, length = 100)
 	private String tratamiento;
+	@Column(name="cantidad", nullable = false, length = 300)
+	private String cantidad;
+	@Column(name = "recetamedica", nullable = false, length = 100)
+	private String recetamedica;
+	@Column(name = "veces", nullable = false, length = 100)
+	private String veces;
+	@JsonSerialize(using= ToStringSerializer.class)
+	private LocalDate fechainicio;
+	@JsonSerialize(using=ToStringSerializer.class)
+	private LocalDate fechafin;
+
+	public String getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(String cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public String getRecetamedica() {
+		return recetamedica;
+	}
+
+	public void setRecetamedica(String recetamedica) {
+		this.recetamedica = recetamedica;
+	}
+
+	public String getVeces() {
+		return veces;
+	}
+
+	public void setVeces(String veces) {
+		this.veces = veces;
+	}
+
+	public LocalDate getFechainicio() {
+		return fechainicio;
+	}
+
+	public void setFechainicio(LocalDate fechainicio) {
+		this.fechainicio = fechainicio;
+	}
+
+	public LocalDate getFechafin() {
+		return fechafin;
+	}
+
+	public void setFechafin(LocalDate fechafin) {
+		this.fechafin = fechafin;
+	}
+
 	public int getIdDetalle() {
 		return idDetalle;
 	}
