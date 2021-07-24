@@ -22,15 +22,17 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources.resourceId(resourceIds).tokenServices(tokenServices);
     }
-//metodo para autenticar el acceso a dichos servicios
+
+    //metodo para autenticar el acceso a dichos servicios
     @Override
     public void configure(HttpSecurity http) throws Exception {
-                http
+        http
                 .requestMatchers()
                 .and()
                 .authorizeRequests()
                 .antMatchers("/consulta/**").authenticated()
-                .antMatchers("/consultaexamen/**" ).authenticated()
+                .antMatchers("/consultam/**").authenticated()
+                .antMatchers("/consultaexamen/**").authenticated()
                 .antMatchers("/especialidad/**").authenticated()
                 .antMatchers("/examen/**").authenticated()
                 .antMatchers("/medico/**").authenticated()
